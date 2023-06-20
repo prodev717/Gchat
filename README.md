@@ -1,2 +1,2 @@
 # Gchat
-# a simple chat app in flask,socket io and bootstrap5.
+# a simple chat app in python using flask,socket io and bootstrap5.
