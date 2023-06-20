@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.2/socket.io.js" integrity="sha512-jMNwWSmjje4fjYut9MBGKXw5FZA6D67NHAuC9szpjbbjg51KefquNfvn4DalCbGfkcv/jHsHnPo1o47+8u4biA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript">
+		var socket = io();
+		socket.on('connect',function(){
+			socket.send('user connected');
+		});
+		socket.on('message',function(data){
+			console.log(data);
+			const para = document.createElement('div');
+			para.className='row';
+			para.innerHTML=data;
+			document.getElementById('chat').appendChild(para);
+			document.getElementById('chat').appendChild(document.createElement('br'));
+		});
+		function trans(){
+			socket.send('{{name}}:'+document.getElementById('mes').value);
+			document.getElementById('mes').value='';
+		};
+	</script>
+	<div id='chat'></div>
+	<div class="fixed-bottom">
+		<h4 class="text-center">{{name}}</h4>
+		<div class="d-flex justify-content-center">
+			<input type="text" name="message" autocomplete="off" id='mes'>
+			<a type="button" class="btn btn-dark" onclick="trans()" href="#end">send</a>
+		</div>
+	</div><br>
+	<div class='container'>
+      <div class="row">
+        <div class="card bg-light text-dark" style="width:18rem;">
+          <div class='card-body'>
+            <h4 class='card-title' style="display:inline;">Gchat</h4>
+            <p class="card-text" id='end'>connects pepole..!</p>
+          </div>
+        </div>
+      </div>
+    </div><br>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1 class="text-center">Welcome to Gchat</h1>
+	<h2 class="text-center">type your name and enter chat room</h2>
+	<form method="POST">
+		<input type="text" name="name" autocomplete="off" style="display:block;margin-left:auto;margin-right:auto;"><br>
+		<input class="btn btn-dark" type="submit" name="sub" value="enter" style="display:block;margin-left:auto;margin-right:auto;">
+    </form>
+    
+{% endblock content %}
